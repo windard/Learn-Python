@@ -9,7 +9,9 @@ def getHtml(url):
     return html
 
 def getImg(html):
-    reg = r'src="(.+?\.jpg)" pic_ext'
+#    http://pic.meizitu.com/wp-content/uploads/2015a/09/27/01.jpg
+#    reg = r'src="(.+\.jpg)"'
+    reg = r'src="(.+?\.jpg)"'
     imgre = re.compile(reg)
     imglist = re.findall(imgre,html)
     x = 0
@@ -18,6 +20,6 @@ def getImg(html):
         x+=1
 
 
-html = getHtml("http://tieba.baidu.com/p/2460150866")
+html = getHtml("http://www.meizitu.com/a/5104.html")
 
 print getImg(html)
