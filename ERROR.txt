@@ -18,3 +18,8 @@ python ERROR
  一般在你复制其他地方的文本时发生，需注意
  match：对应 匹配
  indentation：缩进
+
+ 'module' object has no attribute 'XXX'
+ 换个名字，不要用跟系统库一样的名字
+ 换个地方，不要有中文路径
+ 把.pyc文件删掉。其实是因为你有系统库的一样的名字才会出现.pyc文件
