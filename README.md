@@ -102,7 +102,20 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordin
 S = u"中文"
 print S.encode("utf-8")
 ```
-在使用这样的代码之后，在sublime中可以正常显示了，但是在cmd中还是乱码，cp936与UTF-8的不兼容。
+在使用这样的代码之后，在sublime中可以正常显示了，但是在cmd中还是乱码，cp936与UTF-8的不兼容。  
+在一开始说cmd不会对这个情况报错，会自动解码。那么它的自动解码是发生在哪里，究竟是怎么发生的呢？  
+其实在cmd中运行Python与在sublime中运行Python的代码是一样的，但是输出不一样。在cmd中的是标准输入，标准输出和标准错误输出（stdin/stdout/stderr）,可以用通过这个来查看。
+```python
+import sys
+print sys.stdin.encoding
+print sys.stdout.encoding
+print sys.stderr.encoding
+```
+保存为sys_encoding.py，运行，看一下结果。  
+![sys_encoding_cmd.jpg](sys_encoding_cmd.jpg)  
+![sys_encoding_sublime.jpg](sys_encoding_sublime.jpg)  
+果然在cmd中就与在sublime中不一样。所以在cmd上输出的时候，才能够自动编码，而sublime就不会了。
+
 
 
 ##衷心的建议
@@ -121,6 +134,31 @@ sys.setdefaultencoding('utf-8')
 >- 所有的Python内置模块都支持unicode
 >- 不再支持u'中文'的语法格式
 - 或者有一个Python模块codecs，可以使用这个来进行编码和解码，当然前提是你还是得要了解当前的编码相关的一些基础知识。
+ >关于codecs
+ >读取UTF-8编码的文件
+ >```python
+ >import codecs
+ >fileObj = codecs.open( "someFile", "r", "UTF-8" )
+ >u = fileObj.read()
+ >```
+ >给一个在网上看到的用codecs模块将UTF-8格式编码的文件保存为GBK编码。
+ >```python
+ >#coding:utf-8
+ >import os
+ >import codecs
+ >def ReadFile(filePath, encoding):
+ >    with codecs.open(filePath, "r", encoding=encoding) as f:
+ >        return f.read()
+ >def WriteFile(filePath, content, encoding):
+ >    with codecs.open(filePath, "w", encoding=encoding) as f:
+ >        f.write(content)
+ >def UTF8_to_GBK(src, dst):
+ >    content = ReadFile(src, encoding="utf-8")
+ >   WriteFile(dst, content, "gbk")
+ >if __name__ == '__main__':
+ >	UTF8_to_GBK("XXX","XXX")
+ >```
+ >保存为codecs_decode.py
 
 
 ##一些小测试
@@ -130,10 +168,18 @@ sys.setdefaultencoding('utf-8')
 [Python的中文编码问题](http://segmentfault.com/a/1190000002412924)   
 [Python 设置系统默认编码](http://shirley-ren.iteye.com/blog/1018750)   
 [设置python的默认编码为utf8](http://blog.csdn.net/lgy807720302/article/details/7515743)   
-[ 字符集编码cp936、ANSI、UNICODE、UTF-8、GB2312、GBK、GB18030、DBCS、UCS](http://blog.csdn.net/wanghuiqi2008/article/details/8079071)
-[字符集编码Unicode ,gb2312 cp936](http://www.xiaowanxue.com/up_files/201212717915.html)
-[UTF-8、ISO 8859-1、GB、CP936……](http://kongxz.com/2010/03/utf8-iso8859-gb-cp936-etc/)
-[CP936与GBK、GB2312、GB18030](http://blog.wuliaoa.com/?p=503)
-[Windows代码页](http://blog.wuliaoa.com/?p=495)
-[字符集编码Unicode ,gb2312 cp936](http://www.xiaowanxue.com/up_files/201212717915.html)
-[程序员趣味读物：谈谈Unicode编码](http://pcedu.pconline.com.cn/empolder/gj/other/0505/616631.html)
+[字符集编码cp936、ANSI、UNICODE、UTF-8、GB2312、GBK、GB18030、DBCS、UCS](http://blog.csdn.net/wanghuiqi2008/article/details/8079071)  
+[字符集编码Unicode ,gb2312 cp936](http://www.xiaowanxue.com/up_files/201212717915.html)  
+[UTF-8、ISO 8859-1、GB、CP936……](http://kongxz.com/2010/03/utf8-iso8859-gb-cp936-etc/)  
+[CP936与GBK、GB2312、GB18030](http://blog.wuliaoa.com/?p=503)  
+[Windows代码页](http://blog.wuliaoa.com/?p=495)  
+[字符集编码Unicode ,gb2312 cp936](http://www.xiaowanxue.com/up_files/201212717915.html)  
+[程序员趣味读物：谈谈Unicode编码  ](http://pcedu.pconline.com.cn/empolder/gj/other/0505/616631.html)  
+[怎么在Python里使用UTF-8编码](http://liguangming.com/how-to-use-utf-8-with-python)  
+[Python:使用codecs模块解决因编码问题写入文件出错的问题](http://www.polarxiong.com/archives/python-codecs.html)   
+[Python:如何使用codecs模块将unicode数据保存成gbk格式](http://segmentfault.com/q/1010000002499804)   
+[python中文decode和encode转码](http://wangwei007.blog.51cto.com/68019/1215687)  
+[python中文乱码](http://libao2235.blog.51cto.com/407124/1130169)  
+[我的Python学习记录-中文处理](http://liujiachang.blog.51cto.com/3524138/1074955)   
+[有关 Python 2 和 Sublime Text 中文 Unicode 编码问题的分析与理解](https://www.v2ex.com/t/163786)   
+[python 编码转换](http://www.pythonclub.org/python-basic/codec)
