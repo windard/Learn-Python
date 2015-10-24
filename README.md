@@ -20,8 +20,8 @@ This is my Python demo
 >- Unicode是一种字符集，它为古代或现代使用的文字系统中出现的每一个字符都提供了统一的序列号，规定了符号的二进制代码，但没有规定这个二进制代码该如何存储。也就是说，Unicode的编码方式是固定的，但是实现方式根据需要有很多种，常见的有UTF-8，UTF-16和UTF-32等。
 >- gb2312是中国政府在1980年颁布的，共收录汉字7445个，支持6763个汉字和682个其他字符。1995年汉字扩展规范GBK1.0收录了21886个符号，它分为汉字区和图形符号区，汉字包括21003个字符。2000年的GB18030是取代GBK1.0的正式国家标准。该标准收录了27484个汉字，同时还收录了藏文、蒙文、维吾尔文等主要的少数民族文字。
 >- 从 ASCII、GB2312、GBK到GB18030，这些编码方法是向下兼容的，即同一个字符在这些方案中总是有相同的编码，后面的标准支持更多的字符。即在这些编码中，后面的编码格式支持前面的编码格式，但前面的编码格式不一定支持后面的编码格式。Unicode和UTF-8与这些编码格式完全不兼容。
->- Windows下中文的默认编码格式是cp936，即GBK编码。若非要具体比较起来，GBK定义字符比cp936多出95个字符（80个汉字和15个其他字符）。但是在PHP下的mb_detect_encoding函数会识别为cp936。
->- Windows下的笔记本
+>- Windows下中文的默认编码格式是cp936（code page 936），即GBK编码。若非要具体比较起来，GBK定义字符比cp936多出95个字符（80个汉字和15个其他字符）。但是在PHP下的mb_detect_encoding函数会识别为cp936。
+>- Windows的笔记本在另保存的时候可以选择为ASCII，Unicode，Unicode big endian，UTF-8。但是这个UTF-8斌不是标准的UTF-8，而是带有BOM（Byte Order Mark）的UTF-8编码。所以一般都在编程的时候都不建议直接用笔记本，根本就不是标准的编辑器，还不说它的默认编码是ASCII。
 >- utf-8的编码格式比GBK的编码格式实在好太多了，在Linux和Mac下默认的中文编码格式就是UTF-8，而且全世界通用，强烈建议在任何情况下都将其他的编码格式转化为UTF-8。
 >- python的'\'一般表示转义字符，所以用'\\'表示一个正常'\'，这种形式在Python的正则表达式里面经常遇到，所以在这个时候就可以在字符串之前加上'r'，表示'raw'原生字符串，不具有任何转义意义。同样的道理，在字符串之前加上'u'，表示这是一个以Unicode形式输入的字符串。
 - Python 2.X 的版本与Python 3.X的版本差别有很多。其中有一点就是Python 2.X默认编码ASCII ， 而Python 3.X默认编码UTF-8。  
@@ -135,3 +135,5 @@ sys.setdefaultencoding('utf-8')
 [UTF-8、ISO 8859-1、GB、CP936……](http://kongxz.com/2010/03/utf8-iso8859-gb-cp936-etc/)
 [CP936与GBK、GB2312、GB18030](http://blog.wuliaoa.com/?p=503)
 [Windows代码页](http://blog.wuliaoa.com/?p=495)
+[字符集编码Unicode ,gb2312 cp936](http://www.xiaowanxue.com/up_files/201212717915.html)
+[程序员趣味读物：谈谈Unicode编码](http://pcedu.pconline.com.cn/empolder/gj/other/0505/616631.html)

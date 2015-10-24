@@ -1,4 +1,4 @@
-python ERROR
+﻿python ERROR
 
  getaddrinfo failed
  找不到服务器地址，一般为DNS解析错误
