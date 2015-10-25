@@ -21,7 +21,7 @@ This is my Python demo
 >- gb2312是中国政府在1980年颁布的，共收录汉字7445个，支持6763个汉字和682个其他字符。1995年汉字扩展规范GBK1.0收录了21886个符号，它分为汉字区和图形符号区，汉字包括21003个字符。2000年的GB18030是取代GBK1.0的正式国家标准。该标准收录了27484个汉字，同时还收录了藏文、蒙文、维吾尔文等主要的少数民族文字。
 >- 从 ASCII、GB2312、GBK到GB18030，这些编码方法是向下兼容的，即同一个字符在这些方案中总是有相同的编码，后面的标准支持更多的字符。即在这些编码中，后面的编码格式支持前面的编码格式，但前面的编码格式不一定支持后面的编码格式。Unicode和UTF-8与这些编码格式完全不兼容。
 >- Windows下中文的默认编码格式是cp936（code page 936），即GBK编码。若非要具体比较起来，GBK定义字符比cp936多出95个字符（80个汉字和15个其他字符）。但是在PHP下的mb_detect_encoding函数会识别为cp936。
->- Windows的笔记本在另保存的时候可以选择为ASCII，Unicode，Unicode big endian，UTF-8。但是这个UTF-8斌不是标准的UTF-8，而是带有BOM（Byte Order Mark）的UTF-8编码。所以一般都在编程的时候都不建议直接用笔记本，根本就不是标准的编辑器，还不说它的默认编码是ASCII。
+>- Windows的笔记本在另保存的时候可以选择为ASCII，Unicode(Little Endian)，Unicode big endian，UTF-8。一般都在编程的时候都不建议直接用笔记本，根本就不是标准的编辑器，还不说它的默认编码是ASCII。
 >- utf-8的编码格式比GBK的编码格式实在好太多了，在Linux和Mac下默认的中文编码格式就是UTF-8，而且全世界通用，强烈建议在任何情况下都将其他的编码格式转化为UTF-8。
 >- python的'\'一般表示转义字符，所以用'\\'表示一个正常'\'，这种形式在Python的正则表达式里面经常遇到，所以在这个时候就可以在字符串之前加上'r'，表示'raw'原生字符串，不具有任何转义意义。同样的道理，在字符串之前加上'u'，表示这是一个以Unicode形式输入的字符串。
 - Python 2.X 的版本与Python 3.X的版本差别有很多。其中有一点就是Python 2.X默认编码ASCII ， 而Python 3.X默认编码UTF-8。  
@@ -162,7 +162,18 @@ sys.setdefaultencoding('utf-8')
 
 
 ##一些小测试
-
+[Python编程的中文问题]()
+[字符编码详解	]()
+[python读写文件，和设置文件的字符编码比如utf-8](http://outofmemory.cn/code-snippet/629/python-duxie-file-setting-file-charaeter-coding-biru-utf-8)
+[Unicode之痛](http://pycoders-weekly-chinese.readthedocs.org/en/latest/issue5/unipain.html)
+[关于URL编码](http://www.ruanyifeng.com/blog/2010/02/url_encoding.html)
+[字符编码笔记：ASCII，Unicode和UTF-8](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)
+[Python正则表达式指南](http://blog.jobbole.com/75188/)
+[python 编码转换](http://www.pythonclub.org/python-basic/codec)
+[PYTHON-进阶-编码处理小结](http://wklken.me/posts/2013/08/31/python-extra-coding-intro.html)
+[编码解码器的注册和基本的类](http://python.usyiyi.cn/python_278/library/codecs.html)
+[用Python的codecs处理各种字符编码的字符串和文件](http://www.crifan.com/tutorial_python_codecs_process_file_char_encoding/)
+[ python模块之codecs: 自然语言编码转换](http://blog.csdn.net/zhaoweikid/article/details/1642015)
 
 ##参考链接
 [Python的中文编码问题](http://segmentfault.com/a/1190000002412924)   
