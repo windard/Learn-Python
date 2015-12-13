@@ -17,7 +17,7 @@ for i in range(5):
 	echo()
 
 #但是在递归调用中就出问题
-# @decorator
+# @static
 # def fin(x):
 # 	if x<2: return 1
 # 	return (fin(x-1)+fin(x-2))
