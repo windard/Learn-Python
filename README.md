@@ -60,15 +60,15 @@ S = "中文"
 print S
 ```
 这样在sublime_text中即能够正确显示，但是在cmd中能够显示出来，只不过是乱码。
-![Chinese_decode_1.jpg](Chinese_decode_1.jpg)   
-![Chinese_decode_2.jpg](Chinese_decode_2.jpg)   
+![Chinese_decode_1.jpg](images/Chinese_decode_1.jpg)   
+![Chinese_decode_2.jpg](images/Chinese_decode_2.jpg)   
 这是因为在Windows下中文的默认编码格式为cp936，所以即使我们设定了编码格式为UTF-8，utf-8编码格式的中文也不能再cp936格式下正常显示。可以在cmd中输入`chcp`来查看当前字符集编码格式，使用`chcp 65001`来将Windows默认中文编码格式临时改为UTF-8。
 但是在这里我再次尝试时出现了问题。  
-![Chinese_decode_3.jpg](Chinese_decode_3.jpg)
+![Chinese_decode_3.jpg](images/Chinese_decode_3.jpg)
 这是为什么呢？找不到这个文件？看来还是文件编码不对，在sublime中将这个代码文件的编码格式改为GBK再试试。
-![Chinese_decode_4.jpg](Chinese_decode_4.jpg)
+![Chinese_decode_4.jpg](images/Chinese_decode_4.jpg)
 虽然找到了，但是这回字符又找不到了。将Windows的默认编码格式换回去。
-![Chinese_decode_5.jpg](Chinese_decode_5.jpg)
+![Chinese_decode_5.jpg](images/Chinese_decode_5.jpg)
 这是什么情况，虽然这样可以看到了，但是因为编码格式不是UTF-8，在sublime中不是编辑代码源文件了，而是dump的临时文件，这样看起来非常的不舒服。那我们再换回去。然而换回去的话，在cmd中显示的图片就和我们一开始在cmd中看到的乱码一样了，这样要怎么解决呢？   
 还有，有时候或许是在Python代码的注释中混有中文，效果也是和以上一样。
 - UnicodeDecodeError   
@@ -112,8 +112,8 @@ print sys.stdout.encoding
 print sys.stderr.encoding
 ```
 保存为sys_encoding.py，运行，看一下结果。  
-![sys_encoding_cmd.jpg](sys_encoding_cmd.jpg)  
-![sys_encoding_sublime.jpg](sys_encoding_sublime.jpg)  
+![sys_encoding_cmd.jpg](images/sys_encoding_cmd.jpg)  
+![sys_encoding_sublime.jpg](images/sys_encoding_sublime.jpg)  
 果然在cmd中就与在sublime中不一样。所以在cmd上输出的时候，才能够自动编码，而sublime就不会了。
 
 

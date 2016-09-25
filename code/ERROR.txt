@@ -1,0 +1,36 @@
+﻿python ERROR
+
+ getaddrinfo failed
+ 找不到服务器地址，一般为DNS解析错误
+ 查看是否网址写错或者IP地址有误
+
+ can only concatenate list (not "str") to list
+ 只能把list和list或者str与str相连，不能连接str和list
+ 查看是否将list加str，list是一重列表还是两重列表
+ concatenate（连接）
+
+ list index out of range
+ 列表越界，就是你访问列表的项超出了应有的项
+ 注意列表的开头是0，还有是不是一重列表
+
+ IndentationError: unindent does not match any outer indentation level
+ 没有对齐，调节编辑器tab为四个键。
+ 一般在你复制其他地方的文本时发生，需注意
+ match：对应 匹配
+ indentation：缩进
+
+ 'module' object has no attribute 'XXX'
+ 换个名字，不要用跟系统库一样的名字
+ 换个地方，不要有中文路径
+ 把.pyc文件删掉。其实是因为你有系统库的一样的名字才会出现.pyc文件
+
+ "UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordinal not in range(128)"
+ 字符串在Python内部的表示是unicode编码，因此，在做编码转换时，通常需要以unicode作为中间编码，即先将其他编码的字符串解码（decode）成unicode，再从unicode编码（encode）成另一种编码。 
+ decode的作用是将其他编码的字符串转换成unicode编码，如str1.decode('gb2312')，表示将gb2312编码的字符串str1转换成unicode编码。 
+ encode的作用是将unicode编码转换成其他编码的字符串，如str2.encode('gb2312')，表示将unicode编码的字符串str2转换成gb2312编码。 
+ 因此，转码的时候一定要先搞明白，字符串str是什么编码，然后decode成unicode，然后再encode成其他编码
+ 代码中字符串的默认编码与代码文件本身的编码一致。
+
+ Python中的打开文件操作如果中文就不要用`open()`，用`codecs.open("中文.txt","w","utf-8")`，这样比较保险。
+
+ 如果真的有编码问题实在解决不了，加上这样一句话sys.setdefaultencoding("utf8"),先要reload(sys)

@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block body %}
+    <form action="{{ url_for('register') }}" method="post" class="form" role="form">
+        {{ form.hidden_tag() }}
+        <div class="form-group required">
+            {{ form.username.label(class="control-label") | safe }}
+            {{ form.username(class="form-control", required=True) }}
+        </div>
+        <div class="form-group required">
+            {{ form.email.label(class="control-label") | safe }}
+            {{ form.email(class="form-control", required=True) }}
+        </div>
+        {% if form.errors.password %}
+        <div class="form-group has-error required">
+            {{ form.password.label(class="control-label") | safe }}
+            {{ form.password(class="form-control", required=True) }}
+            {% for error in form.errors.password %}
+                <p class="help-block">{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="form-group required">
+            {{ form.password.label(class="control-label") | safe }}
+            {{ form.password(class="form-control", required=True) }}
+        </div>
+        {% endif %}
+
+        {% if form.errors.password1 %}
+        <div class="form-group has-error required">
+            {{ form.password1.label(class="control-label") | safe }}
+            {{ form.password1(class="form-control", required=True) }}
+            {% for error in form.errors.password1 %}
+                <p class="help-block">{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="form-group required">
+            {{ form.password1.label(class="control-label") | safe }}
+            {{ form.password1(class="form-control", required=True) }}
+        </div>
+        {% endif %}
+
+        {% if form.errors.verification_code %}
+        <div class="form-group has-error required">
+            {{ form.verification_code.label(class="control-label") | safe }}
+            {{ form.verification_code(class="form-control", required=True) }}
+            {% for error in form.errors.verification_code %}
+                <p class="help-block">{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="form-group required">
+            {{ form.verification_code.label(class="control-label") | safe }}
+            <label class="control-label"><img src="{{ url_for('code') }}"></label>
+            {{ form.verification_code(class="form-control", required=True) }}
+        </div>
+        {% endif %}
+
+        {{ form.submit(class="btn btn-info submit") }}
+    </form>
+    <div class="register">
+        <a type="button" class="btn btn-info" style="width: 100%;" href="#">已有账号？登录</a>
+    </div>
+{% endblock %}
