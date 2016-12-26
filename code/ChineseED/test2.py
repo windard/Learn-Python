@@ -1,0 +1,5 @@
+# coding=GBK
+
+a = "жпнд"
+
+print a
