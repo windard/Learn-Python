@@ -11,5 +11,5 @@ PASSWORD = 'default'
 
 HOST='0.0.0.0'
 PORT=8888
-SQLALCHEMY_DATABASE_URI = 'mysql://root:123456@localhost/test'
+SQLALCHEMY_DATABASE_URI = 'mysql://web:web@localhost/test'
 SQLALCHEMY_TRACK_MODIFICATIONS = True
