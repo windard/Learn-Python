@@ -292,27 +292,6 @@ sys.setdefaultencoding('utf-8')
  >保存为codecs_decode.py
 
 
-## ipython
-
-最近使用了一个好东西，jupter notebook ，简单记录一下使用情况。
-
-```
-jupyter notebook 
-jupyter notebook --no-browser
-jupyter notebook --port 9999
-jupyter notebook --help
-jupyter notebook --ip=0.0.0.0 #外部访问
-
-#常用：jupyter notebook --no-browser --port 5000 --ip=0.0.0.0
-```
-
-rich output
-
-```
-from IPython.display import HTML, Image, YouTubeVideo
-from IPython.display import Image
-Image(url='http://python.org/images/python-logo.gif')
-```
 
 ## 一些小测试
 [Python编程的中文问题]() <br>
