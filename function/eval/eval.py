@@ -7,6 +7,7 @@ for i in range(1, 5):
 print('#######\texec function\t#######')
 for i in range(1, 5):
 	print(exec('std_'+str(i)))
+	exec('print(std_{})'.format(i))
 
 print('#######\tdict function\t#######')
 dict = {}
